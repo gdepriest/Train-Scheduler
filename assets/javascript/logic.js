@@ -51,14 +51,47 @@ database.ref().on("child_added", function(childSnapshot) {
     var startTime = childSnapshot.val().start;
     var frequency = childSnapshot.val().freq;
 
-    console.log(trainName);
-    console.log(destination);
-    console.log(startTime);
-    console.log(frequency);
+    // console.log(trainName);
+    // console.log(destination);
+    // console.log(startTime);
+    // console.log(frequency);
 
     //nextArrival needs to be part of the math - it needs to take the user input start point, the current time, and user-input frequency
-    
-    // var startTimeConverted = moment()
+    //convert time, set to a year ago (to make it always the bigger number. Needed for when a user arrives prior to when the train begins rotation ***Not sure about this step.)
+    var startTimeConverted = moment(startTime, "hh:mm").subtract(1, "years");
+    console.log(startTimeConverted);
 
+    //take the current time from moment, set as variable
+    var currentTime = moment();
+    // console.log(currentTime);
+
+    //difference between current time and startTime in minutes
+    var timeDifference = currentTime.diff(moment(startTimeConverted), "minutes");
+    console.log("Time Difference: " + timeDifference);
+
+    //get the remainder b/t the difference in time and the frequency
+    var remainder = timeDifference % frequency;
+    console.log(remainder);
+
+    //minutes away will be the difference b/t the frequency and the remainder.
+    var minutesAway = frequency - remainder;
+    console.log("Minutes Away: " + minutesAway);
+
+    var nextArrival = currentTime.add(minutesAway, "minutes").format("hh:mm");
+    console.log("Next Train: " + nextArrival);
+
+    //new row with all the info
+    var newRow = $("<tr>").append(
+        $("<td>").text(trainName),
+        $("<td>").text(destination),
+        $("<td>").text(frequency),
+        $("<td>").text(nextArrival),
+        $("<td>").text(minutesAway),
+      );
+
+    //append row to table
+
+    $("tbody").append(newRow);
+    
 
 })
