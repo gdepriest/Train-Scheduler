@@ -71,14 +71,14 @@ database.ref().on("child_added", function(childSnapshot) {
 
     //get the remainder b/t the difference in time and the frequency
     var remainder = timeDifference % frequency;
-    console.log(remainder);
+    // console.log(remainder);
 
     //minutes away will be the difference b/t the frequency and the remainder.
     var minutesAway = frequency - remainder;
-    console.log("Minutes Away: " + minutesAway);
+    // console.log("Minutes Away: " + minutesAway);
 
     var nextArrival = currentTime.add(minutesAway, "minutes").format("hh:mm");
-    console.log("Next Train: " + nextArrival);
+    // console.log("Next Train: " + nextArrival);
 
     //new row with all the info
     var newRow = $("<tr>").append(
@@ -87,7 +87,7 @@ database.ref().on("child_added", function(childSnapshot) {
         $("<td>").text(frequency),
         $("<td>").text(nextArrival),
         $("<td>").text(minutesAway),
-      );
+    );
 
     //append row to table
 
@@ -100,7 +100,6 @@ $("#peaceTrain").on("click", function(event) {
     event.preventDefault();
     var peaceTrainAudio = document.createElement("audio");
     peaceTrainAudio.setAttribute("src", "assets/sounds/peaceTrain.mp3");
-    if ()
     peaceTrainAudio.play();
     //find a way to check if the song is currently playing 
 });
