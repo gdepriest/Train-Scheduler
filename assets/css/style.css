@@ -1,0 +1,31 @@
+body {
+    font-family: 'Noto Sans HK', sans-serif;
+}
+
+h1 {
+    color: silver;
+}
+
+#peaceTrain {
+    font-size: 45px;
+}
+
+#submit {
+    font-size: 20px;
+    border: 2px solid aqua;
+}
+
+th {
+    font-size: 18px;
+    color:  aqua;
+}
+
+td {
+    font-size: 16px;
+}
+
+form {
+    font-size: 18px;
+    padding-top: 25px;
+    border-top: 2px solid aqua;
+}

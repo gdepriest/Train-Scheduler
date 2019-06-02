@@ -95,3 +95,12 @@ database.ref().on("child_added", function(childSnapshot) {
     
 
 })
+
+$("#peaceTrain").on("click", function(event) {
+    event.preventDefault();
+    var peaceTrainAudio = document.createElement("audio");
+    peaceTrainAudio.setAttribute("src", "assets/sounds/peaceTrain.mp3");
+    if ()
+    peaceTrainAudio.play();
+    //find a way to check if the song is currently playing 
+});
